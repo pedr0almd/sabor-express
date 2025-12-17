@@ -4,19 +4,19 @@ restaurantes = [
     {
      'nome': 'Praça', 
      'categoria': 'Japonesa',
-     'ativo': False  
+     'ativo': False
      },
     
     {
      'nome': 'Pizza Suprema',
      'categoria': 'Pizza',
-     'ativo': 'True'
+     'ativo': True
      },
     
     {
      'nome': 'Cantina',
      'categoria': 'Italiano',
-     'ativo': 'False'
+     'ativo': False
      }
 ]
 
@@ -26,9 +26,11 @@ restaurantes = [
 
 def exibir_subtitulo(texto):
     os.system('cls')
+    linha = '*' * len(texto)
+    print(linha)
     print(texto)
-    print('-' * 60)
-
+    print(f'{linha} \n')
+    
 def voltar_para_o_inicio():
     input('\nDigite QUALQUER tecla para voltar para o menu principal')
     main()
@@ -66,13 +68,15 @@ def cadastrar_restaurante():
 def listar_restaurantes():
     exibir_subtitulo('Listar restaurantes')
 
+    nome_tabela = f'{'Nome do restaurante'.ljust(20)} | {'Categoria'.ljust(20)} | {'Status'.ljust(20)} |'
+    print(nome_tabela)
+    print('-' * len(nome_tabela))
     for restaurante in restaurantes:
         nome_restaurante = restaurante['nome']
         categoria_restaurante = restaurante['categoria']
-        status_restaurante = restaurante['ativo']
+        estado_restaurante = 'Ativo' if restaurante['ativo'] else 'Inativo'
         
-        print(f'Restaurante: {nome_restaurante}\nCategoria: {categoria_restaurante}\nAtivo: {status_restaurante}')
-        print('')
+        print(f'{nome_restaurante.ljust(20)} | {categoria_restaurante.ljust(20)} | {estado_restaurante.ljust(20)} |')
     
     voltar_para_o_inicio()
 
